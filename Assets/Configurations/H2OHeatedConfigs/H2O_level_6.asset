@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b2400509ee6437490fb4f7a90b8b70a, type: 3}
+  m_Name: H2O_level_6
+  m_EditorClassIdentifier: 
+  LevelId: 6
+  BodyMaterial: {fileID: 2100000, guid: 4b4052c1ea67cde4ab67236ef6db4fcb, type: 2}
+  moveSpeed: 2
+  sharpTurnSpeed: 300
+  turnSpeed: 150
+  sharpTurnSpeedFactor: 0.1
+  directionChangeInterval: 0.5
