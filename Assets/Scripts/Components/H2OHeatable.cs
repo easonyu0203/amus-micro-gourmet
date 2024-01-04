@@ -15,9 +15,6 @@ namespace Components
         [FormerlySerializedAs("_maxheatLevel")] [Tooltip("水分子最高受熱等級")] [SerializeField]
         private int _maxHeatLevel = 6;
 
-        [Tooltip("水分子加熱升等需要的熱量(加熱一秒得到一熱量)")] [SerializeField]
-        private int heatUpCalorieAmount = 1;
-
         [Header("State")] [SerializeField] private int _heatLevel = 1;
 
         [Header("Dependency")] [SerializeField]

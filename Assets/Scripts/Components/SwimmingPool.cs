@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -25,8 +26,9 @@ namespace Components
         [Header("Dependency")] public PoolHeater PoolHeater;
         
         [Header("State")] [Tooltip("H2Os in this pool")]  public List<H2OBehaviour> H2Os;
-        private Dictionary<H2OBehaviour, UnityAction> _h2OEventListeners = new Dictionary<H2OBehaviour, UnityAction>();
         
+        // hook to unity cycle
+        private event Action OnDestroyed;
         
         public int PoolId => _poolId;
 
@@ -38,7 +40,7 @@ namespace Components
         {
             H2Os.Add(h2O);
 
-            UnityAction action = () =>
+            UnityAction onH2ODestroyedAction = () =>
             {
                 H2Os.Remove(h2O);
                 if (H2Os.Count == 0)
@@ -47,8 +49,19 @@ namespace Components
                 }
             };
 
-            _h2OEventListeners.Add(h2O, action);
-            h2O.OnDestroyed.AddListener(action);
+            h2O.OnDestroyed.AddListener(onH2ODestroyedAction);
+            OnDestroyed += () => h2O.OnDestroyed.RemoveListener(onH2ODestroyedAction);
+        }
+
+        /// <summary>
+        /// remove all H2O from the pool
+        /// </summary>
+        public void CleanPool()
+        {
+            foreach (H2OBehaviour h2O in H2Os)
+            {
+                Destroy(h2O.gameObject);
+            }
         }
 
         /// <summary>
@@ -77,10 +90,9 @@ namespace Components
         
         private void OnDestroy()
         {
-            foreach (var pair in _h2OEventListeners)
-            {
-                pair.Key.OnDestroyed.RemoveListener(pair.Value);
-            }
+            OnDestroyed?.Invoke();
+            
+            OnPoolEmpty.RemoveAllListeners();
         }
     }
 }

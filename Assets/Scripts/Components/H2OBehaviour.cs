@@ -20,6 +20,8 @@ namespace Components
         private void OnDestroy()
         {
             OnDestroyed.Invoke();
+            
+            OnDestroyed.RemoveAllListeners();
         }
     }
 }
