@@ -19,13 +19,15 @@ namespace Systems.Core
         public bool IsPlaying;
         
         [Header("Game Events")]
+        [Tooltip("When the game start")]
         public UnityEvent onStartGame;
-        [FormerlySerializedAs("onStopGame")] public UnityEvent onQuitGame;
+        [Tooltip("When quit game")]
+        public UnityEvent onQuitGame;
         public UnityEvent onGameOver;
         
         [Header("Dual Dependency")]
         public GameTimer gameTimer;
-        [SerializeField] private SpawnManager _spawnManager;
+        public SpawnManager SpawnManager;
 
         public void StartGame()
         {

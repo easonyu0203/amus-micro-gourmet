@@ -5,30 +5,32 @@ using Components;
 using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace Systems.Core
 {
     public class SpawnManager : MonoBehaviour
     {
-        [Header("Configuration")]
+        [Header("Configuration")] [Tooltip("水分子生成數量權重")] [SerializeField]
+        private List<PoolWeights> swimmingPoolsOccurrencesWeights = new();
 
-        [Tooltip("水分子生成數量權重")] public List<PoolWeights> swimmingPoolsOccurrencesWeights = new();
         private Dictionary<int, WeightedValue> _poolsWeightsDictionary;
-        
-        [Header("State")]
-        private readonly Dictionary<SwimmingPool, UnityAction> _poolRefillActions = new ();
+
+        [Header("Events")] [Tooltip("Trigger when H2O Destroy with <H2OBehavior, pool id>")]
+        public UnityEvent<H2OBehaviour, int> OnH2ODestroy;
+
+        [Header("State")] private readonly Dictionary<SwimmingPool, UnityAction> _poolRefillActions = new();
 
 
         [Header("Dual Dependency")] [SerializeField]
         private MicrowaveGameManager gameManager;
-        
-         [Header("Dependency")] [SerializeField] private SwimmingPoolsManager swimmingPoolsManager;
-        
+
+        [Header("Dependency")] [SerializeField]
+        private SwimmingPoolsManager swimmingPoolsManager;
+
         // hook unity cycle
         private event Action OnDestroyed;
-        
+
         private void Awake()
         {
             // Convert list to dictionary
@@ -49,6 +51,8 @@ namespace Systems.Core
 
         private void Start()
         {
+            H2ODestroyEventHook();
+
             gameManager.onStartGame.AddListener(OnStartGame);
             gameManager.onQuitGame.AddListener(OnStopGame);
             gameManager.onGameOver.AddListener(OnStopGame);
@@ -66,11 +70,22 @@ namespace Systems.Core
             InitFillPools();
             RefillPoolsHook();
         }
-        
+
         private void OnStopGame()
         {
             UnhookRefillPools();
             CleanPools();
+        }
+
+        /// <summary>
+        /// hook to event of H2O Destroy to forward this event to OnH2ODestroy event
+        /// </summary>
+        private void H2ODestroyEventHook()
+        {
+            void ForwardEvent(H2OBehaviour h2O, int poolId) => OnH2ODestroy.Invoke(h2O, poolId);
+            swimmingPoolsManager.OnH2ODestroy.AddListener(ForwardEvent);
+
+            OnDestroyed += () => swimmingPoolsManager.OnH2ODestroy.RemoveListener(ForwardEvent);
         }
 
         private void InitFillPools()
@@ -81,7 +96,7 @@ namespace Systems.Core
                 FillPool(swimmingPool.PoolId);
             }
         }
-        
+
         /// <summary>   
         /// hook to event which enable refill pool whenever pool is empty
         /// </summary>
@@ -95,7 +110,7 @@ namespace Systems.Core
                 pool.OnPoolEmpty.AddListener(fillPoolAction);
             }
         }
-        
+
         private void UnhookRefillPools()
         {
             foreach (var entry in _poolRefillActions)
@@ -113,7 +128,7 @@ namespace Systems.Core
                 swimmingPool.CleanPool();
             }
         }
-        
+
         /// <summary>
         /// fill a given pool with randomize create time for each H2O to have the H2O casually pop out effect
         /// </summary>
@@ -122,14 +137,14 @@ namespace Systems.Core
         {
             var occurrenceWeights = _poolsWeightsDictionary[poolId];
             StartCoroutine(InstantiateH2ODelayed(poolId, occurrenceWeights.GetWeightedValue()));
+        }
 
-            IEnumerator InstantiateH2ODelayed(int poolId, int amount)
+        private IEnumerator InstantiateH2ODelayed(int poolId, int amount)
+        {
+            for (var i = 0; i < amount; i++)
             {
-                for (var i = 0; i < amount; i++)
-                {
-                    yield return new WaitForSeconds(Random.Range(0.1f, 0.4f));
-                    swimmingPoolsManager.InstantiateH2O(poolId);
-                }
+                yield return new WaitForSeconds(Random.Range(0.1f, 0.4f));
+                swimmingPoolsManager.InstantiateH2O(poolId);
             }
         }
 
@@ -140,7 +155,7 @@ namespace Systems.Core
             OnDestroyed = null;
         }
     }
-    
+
     /// <summary>
     /// contain the occurrence weights for the pool, the occurrence weight determine the probability
     /// of how much H2O will be create when fill a pool
@@ -150,7 +165,6 @@ namespace Systems.Core
     {
         public int poolId;
 
-        [Tooltip("Reference to the weights")]
-        public WeightedValue occurrenceWeights;
+        [Tooltip("Reference to the weights")] public WeightedValue occurrenceWeights;
     }
 }

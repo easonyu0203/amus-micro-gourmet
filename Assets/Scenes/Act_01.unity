@@ -1435,7 +1435,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   gameTimer: {fileID: 1436405823}
-  _spawnManager: {fileID: 1436405824}
+  SpawnManager: {fileID: 1436405824}
 --- !u!114 &1436405823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1480,6 +1480,9 @@ MonoBehaviour:
     occurrenceWeights: {fileID: 11400000, guid: 2523fe4eddcdee94ea220d5fe0a45dec, type: 2}
   - poolId: 6
     occurrenceWeights: {fileID: 11400000, guid: bb0a9b7ac15ccb844ac1ed03f7d784e3, type: 2}
+  OnH2ODestroy:
+    m_PersistentCalls:
+      m_Calls: []
   gameManager: {fileID: 1436405822}
   swimmingPoolsManager: {fileID: 2062986998}
 --- !u!114 &1436405825
@@ -2297,6 +2300,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bccd2b1ef9f4f8c8c16fc3a52f83507, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnH2ODestroy:
+    m_PersistentCalls:
+      m_Calls: []
   SwimmingPools:
   - {fileID: 293827407}
   - {fileID: 1804572911}

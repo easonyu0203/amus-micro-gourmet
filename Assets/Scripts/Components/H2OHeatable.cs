@@ -24,6 +24,8 @@ namespace Components
         [SerializeField] private SkinnedMeshRenderer _faceRenderer;
         private Dictionary<int, H2OHeatedConfig> h2OConfigsDictionary;
 
+        public int HeatLevel => _heatLevel;
+
 
         private void Awake()
         {

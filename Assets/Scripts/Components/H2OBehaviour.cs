@@ -15,12 +15,11 @@ namespace Components
         public H2OHeatable Heatable => _heatable;
 
         [Header("Events")]
-        public UnityEvent OnDestroyed = new ();
+        public UnityEvent<H2OBehaviour> OnDestroyed = new ();
 
         private void OnDestroy()
         {
-            OnDestroyed.Invoke();
-            
+            OnDestroyed.Invoke(this);
             OnDestroyed.RemoveAllListeners();
         }
     }

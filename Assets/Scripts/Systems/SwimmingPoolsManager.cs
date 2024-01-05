@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using Components;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Serialization;
 
 namespace Systems
 {
     public class SwimmingPoolsManager : MonoBehaviour
     {
+        [Header("Events")]
+        [Tooltip("Trigger when H2O Destroy with <H2OBehavior, pool id>")] 
+        public UnityEvent<H2OBehaviour, int> OnH2ODestroy;
+        
         [Header("State")]
         public SwimmingPool[] SwimmingPools;
         
@@ -16,6 +21,9 @@ namespace Systems
         [SerializeField]
         private GameObject _swimmingPoolsParent;
         [SerializeField] private GameObject h2OPrefab;
+        
+        // unity cycle
+        private event Action OnDestroyed;
 
 
         public SwimmingPool GetSwimmingPoolById(int poolId)
@@ -47,6 +55,11 @@ namespace Systems
             
             // register to pool
             targetPool.RegisterH2O(h2O);
+            
+            // set trigger for OnH2ODestroy
+            UnityAction<H2OBehaviour> triggerH2ODestroyedAction = (innerH2O) => OnH2ODestroy.Invoke(innerH2O, poolId); 
+            h2O.OnDestroyed.AddListener(triggerH2ODestroyedAction);
+            OnDestroyed += () => h2O.OnDestroyed.RemoveListener(triggerH2ODestroyedAction);
         }
 
         /// <summary>
@@ -77,6 +90,12 @@ namespace Systems
                 Debug.LogWarning("SwimmingPoolsParent is not set in the editor.");
                 SwimmingPools = Array.Empty<SwimmingPool>(); // Reset the array
             }
+        }
+
+        private void OnDestroy()
+        {
+            OnDestroyed?.Invoke();
+            OnDestroyed = null;
         }
     }
 }

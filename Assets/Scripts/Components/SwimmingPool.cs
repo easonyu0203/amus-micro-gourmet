@@ -40,9 +40,9 @@ namespace Components
         {
             H2Os.Add(h2O);
 
-            UnityAction onH2ODestroyedAction = () =>
+            UnityAction<H2OBehaviour> onH2ODestroyedAction = (innerH2O) =>
             {
-                H2Os.Remove(h2O);
+                H2Os.Remove(innerH2O);
                 if (H2Os.Count == 0)
                 {
                     OnPoolEmpty.Invoke();
