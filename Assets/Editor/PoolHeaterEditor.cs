@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEditor;
-using Components; // Ensure this namespace matches the namespace of your PoolHeater class
+using Components; 
 
 [CustomEditor(typeof(PoolHeater))]
 public class PoolHeaterEditor : Editor

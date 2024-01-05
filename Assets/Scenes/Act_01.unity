@@ -1389,6 +1389,7 @@ GameObject:
   - component: {fileID: 1436405822}
   - component: {fileID: 1436405823}
   - component: {fileID: 1436405824}
+  - component: {fileID: 1436405825}
   m_Layer: 26
   m_Name: MicrowaveGameManager
   m_TagString: Untagged
@@ -1479,6 +1480,20 @@ MonoBehaviour:
     occurrenceWeights: {fileID: 11400000, guid: 2523fe4eddcdee94ea220d5fe0a45dec, type: 2}
   - poolId: 6
     occurrenceWeights: {fileID: 11400000, guid: bb0a9b7ac15ccb844ac1ed03f7d784e3, type: 2}
+  gameManager: {fileID: 1436405822}
+  swimmingPoolsManager: {fileID: 2062986998}
+--- !u!114 &1436405825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436405820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b4425e4092c408c8c1675baad1185d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   gameManager: {fileID: 1436405822}
   swimmingPoolsManager: {fileID: 2062986998}
 --- !u!4 &1530115189 stripped

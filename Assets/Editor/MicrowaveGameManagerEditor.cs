@@ -21,6 +21,7 @@ public class MicrowaveGameManagerEditor : Editor
         buttonStyle.padding = new RectOffset(15, 15, 8, 8); // Add some padding for better look
 
         GUILayout.Space(10); // Add some space before the button
+        EditorGUILayout.LabelField("Game Controls", EditorStyles.boldLabel);
 
         // Button to start the game
         if (GUILayout.Button("Start Game", buttonStyle, GUILayout.Height(40)))

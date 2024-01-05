@@ -7,26 +7,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="452828e4-3373-413d-a3ad-3097e795d866" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/MicrowaveGameManagerEditor.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/MicrowaveGameManagerEditor.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Systems/Core.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Systems/Core/GameTimer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Systems/Core/GameTimer.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Systems/Core/MicrowaveGameManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Systems/Core/SpawnManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Systems/Core/SpawnManager.cs.meta" afterDir="false" />
+    <list default="true" id="452828e4-3373-413d-a3ad-3097e795d866" name="Changes" comment="feat: refactor game manager logic classes">
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/TestingGameController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/TestingGameController.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Testing.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Testing/TestingGameController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Testing/TestingGameController.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MicroGourmet/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MicroGourmet/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/04_Animation/H2O_Animator.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/04_Animation/H2O_Animator.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/MicrowaveGameManagerEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/MicrowaveGameManagerEditor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/PoolHeaterEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/PoolHeaterEditor.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Act_01.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Act_01.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Components/H2OBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Components/H2OBehaviour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Components/H2OHeatable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Components/H2OHeatable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Components/SwimmingPool.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Components/SwimmingPool.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Systems/H2OFactory.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Systems/H2OFactory.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Systems/MicrowaveGameManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Systems/MicrowaveGameManager.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Systems/Core/MicrowaveGameManager.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Systems/SwimmingPoolManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Systems/SwimmingPoolsManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Systems/SwimmingPoolManager.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Systems/SwimmingPoolsManager.cs.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,17 +42,11 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock://C:/Users/eason/Project/glowing/MicroGourmet/Assets/Scenes/Act_01.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Components/H2OBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Components/SwimmerMovement.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/eason/Project/glowing/MicroGourmet/Assets/Scripts/Components/SwimmerMovement.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Components/SwimmingPool.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/eason/Project/glowing/MicroGourmet/Assets/Scripts/Components/SwimmingPool.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/HeatingSystem.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Managers/MicrowaveGameManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Managers/SwimmingPoolManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/eason/Project/glowing/MicroGourmet/Assets/_MK/MKToon/Examples/Scripts/SpectateCamera.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_MK/MKToon/Shader/Legacy/Standard/StandardUnlit.shader" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/eason/Project/glowing/MicroGourmet/Library/InspectorExpandedItems.asset" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -153,7 +138,7 @@
       <workItem from="1703922579048" duration="5692000" />
       <workItem from="1703977917621" duration="9200000" />
       <workItem from="1704218417015" duration="14346000" />
-      <workItem from="1704261864889" duration="17491000" />
+      <workItem from="1704261864889" duration="19393000" />
     </task>
     <task id="LOCAL-00001" summary="feat: H2O instantiate successful">
       <option name="closed" value="true" />
@@ -187,7 +172,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704252267005</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="feat: refactor game manager logic classes">
+      <option name="closed" value="true" />
+      <created>1704396375794</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1704396375795</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -203,6 +196,7 @@
     <MESSAGE value="feat: heatup system complete, working on h2O heatup effects" />
     <MESSAGE value="feat: h2O heat effect version 0 done" />
     <MESSAGE value="feat: add create &amp; repopulate h2o game logic" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add create &amp; repopulate h2o game logic" />
+    <MESSAGE value="feat: refactor game manager logic classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: refactor game manager logic classes" />
   </component>
 </project>
